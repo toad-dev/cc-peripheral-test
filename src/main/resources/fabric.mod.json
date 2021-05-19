@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "cc-peripheral-test",
+  "version": "${version}",
+  "name": "CC Peripheral Test",
+  "description": "A mod for testing Computer Craft's peripheral APIs",
+  "authors": [
+    "ToadDev"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/cc-peripheral-test/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.toaddev.mods.ccperipheraltest.CCPeripheralTest"
+    ]
+  },
+  "mixins": [
+    "cc-peripheral-test.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  }
+}

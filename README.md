@@ -1,1 +1,1 @@
-An example mod adding a simple computer craft peripheral on fabric.
+Example fabric mod adding a simple Computer Craft peripheral 

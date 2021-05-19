@@ -30,7 +30,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // CC: Restitched and its runtime dependencies
-    modImplementation "curse.maven:ccrestichedupdated-462672:3310660"
+    modImplementation "curse.maven:ccrestiched-${project.cc_project_id}:${project.cc_file_id}"
     runtimeOnly "blue.endless:jankson:1.2.0"
     modRuntime "me.shedaniel.cloth.api:cloth-api:1.5.50"
 }

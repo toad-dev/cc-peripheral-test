@@ -16,17 +16,22 @@ import net.minecraft.util.math.Quaternion;
 public class TestTurtleUpgrade implements ITurtleUpgrade {
     private static final Identifier ID = new Identifier(CCPeripheralTest.MOD_NAMESPACE, "test_upgrade");
     private static final ItemStack CRAFTING_ITEM = new ItemStack(CCPeripheralTest.TEST_PERIPHERAL_ITEM);
+    private static final IPeripheral PERIPHERAL = new TestPeripheral();
 
+    // Turtle upgrades can be tools, peripherals, or both. This simple upgrade is just a peripheral.
     @Override
     public TurtleUpgradeType getType() {
         return TurtleUpgradeType.PERIPHERAL;
     }
 
+    // Provide our peripheral. Easy.
     @Override
     public IPeripheral createPeripheral(ITurtleAccess turtle, TurtleSide side) {
-        return new TestPeripheral();
+        return PERIPHERAL;
     }
 
+    // Re-use our block model with appropriate transformation to give our upgrade visuals. Could also create and load
+    // a bespoke .json model.
     @Override
     public TransformedModel getModel(ITurtleAccess iTurtleAccess, TurtleSide turtleSide) {
         float offset = turtleSide == TurtleSide.RIGHT ? 0.23f : -0.23f;
@@ -44,11 +49,14 @@ public class TestTurtleUpgrade implements ITurtleUpgrade {
         return ID;
     }
 
+    // This translation key is defined in the lang file. see resources/assets/cc_test/lang
     @Override
     public String getUnlocalisedAdjective() {
         return "turtle-adjective.testy";
     }
 
+    // This method is used by Computer Craft to allow crafting the upgrade item with a turtle, and allow the turtle
+    // equip command to function.
     @Override
     public ItemStack getCraftingItem() {
         return CRAFTING_ITEM;

@@ -11,12 +11,7 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
+    maven { url "https://jitpack.io" }
     maven { url "https://maven.shedaniel.me/" }
 }
 
@@ -30,7 +25,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // CC: Restitched and its runtime dependencies
-    modImplementation "curse.maven:ccrestiched-${project.cc_project_id}:${project.cc_file_id}"
+    modImplementation "com.github.Merith-TK:cc-restitched:${project.cc_version_tag}"
     runtimeOnly "blue.endless:jankson:1.2.0"
     modRuntime "me.shedaniel.cloth.api:cloth-api:1.5.50"
 }

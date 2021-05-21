@@ -33,7 +33,7 @@ public class CCPeripheralTest implements ModInitializer {
         Registry.register(Registry.ITEM, TEST_PERIPHERAL_ID, TEST_PERIPHERAL_ITEM);
         // The model, texture, and loot table for this block are defined with .json files. see resources/assets/cc_test
 
-        // Register the peripheral provider that will allow connect our block to our peripheral.
+        // Register the peripheral provider that will connect our block to our peripheral.
         ComputerCraftAPI.registerPeripheralProvider(new TestPeripheralProvider());
         // Register the turtle upgrade too.
         ComputerCraftAPI.registerTurtleUpgrade(new TestTurtleUpgrade());

@@ -6,27 +6,27 @@ import me.toaddev.mods.ccperipheraltest.peripherals.TestTurtleUpgrade;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Material;
 
 public class CCPeripheralTest implements ModInitializer {
     public static final String MOD_NAMESPACE = "cc_test";
 
 
-    public static final Identifier TEST_PERIPHERAL_ID = new Identifier(MOD_NAMESPACE, "test_peripheral");
+    public static final ResourceLocation TEST_PERIPHERAL_ID = new ResourceLocation(MOD_NAMESPACE, "test_peripheral");
     // Declare block singleton to be used as peripheral block, with appropriate block settings.
     public static final Block TEST_PERIPHERAL_BLOCK = new Block(FabricBlockSettings.of(Material.STONE));
     // Declare item singleton that will represent our new block.
-    public static final Item TEST_PERIPHERAL_ITEM = new BlockItem(TEST_PERIPHERAL_BLOCK, new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item TEST_PERIPHERAL_ITEM = new BlockItem(TEST_PERIPHERAL_BLOCK, new FabricItemSettings().group(CreativeModeTab.TAB_MISC));
 
     @Override
     public void onInitialize() {
-        // For minecraft to use the new block, it must be registered with an associated identifier.
+        // For minecraft to use the new block, it must be registered with an associated ResourceLocation.
         Registry.register(Registry.BLOCK, TEST_PERIPHERAL_ID, TEST_PERIPHERAL_BLOCK);
         // Also register the item associated with our block. Without this the new block could be /setblock'd into the
         // world, but not held in an inventory.

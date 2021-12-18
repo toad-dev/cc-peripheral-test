@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.6-SNAPSHOT'
+    id 'fabric-loom' version '0.10-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -12,34 +12,26 @@ group = project.maven_group
 
 repositories {
     maven { url "https://jitpack.io" }
+    maven { url "https://squiddev.cc/maven" }
     maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/" }
 }
 
 dependencies {
-    //to change the versions see the gradle.properties file
+    // to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Fabric API. This is technically optional, but you probably want it anyway.
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    // CC: Restitched and its runtime dependencies
-    modImplementation "com.github.Merith-TK:cc-restitched:${project.cc_version_tag}"
-    runtimeOnly "blue.endless:jankson:1.2.0"
-    modRuntime "me.shedaniel.cloth.api:cloth-api:1.5.50"
+    // CC: Restitched
+    modImplementation("com.github.cc-tweaked:cc-restitched:${project.cc_version_tag}")
 }
 
 processResources {
     inputs.property "version", project.version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include "fabric.mod.json"
+    filesMatching("fabric.mod.json") {
         expand "version": project.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "fabric.mod.json"
     }
 }
 

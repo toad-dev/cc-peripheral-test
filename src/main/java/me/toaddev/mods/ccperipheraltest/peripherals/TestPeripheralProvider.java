@@ -3,10 +3,10 @@ package me.toaddev.mods.ccperipheraltest.peripherals;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.api.peripheral.IPeripheralProvider;
 import me.toaddev.mods.ccperipheraltest.CCPeripheralTest;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class TestPeripheralProvider implements IPeripheralProvider {
     // In this simple case the peripheral has no state, so only one instance is needed.
@@ -16,10 +16,10 @@ public class TestPeripheralProvider implements IPeripheralProvider {
     // If whatever is at blockPos is something we want to provide a peripheral for, we return the peripheral.
     // If not, return null and Computer Craft will go on to check other registered providers.
     @Override
-    public IPeripheral getPeripheral(World world, BlockPos blockPos, Direction direction) {
+    public IPeripheral getPeripheral(Level world, BlockPos blockPos, Direction direction) {
         BlockState blockState = world.getBlockState(blockPos);
 
-        if(blockState.getBlock().is(CCPeripheralTest.TEST_PERIPHERAL_BLOCK)) {
+        if(blockState.getBlock().equals(CCPeripheralTest.TEST_PERIPHERAL_BLOCK)) {
             return TEST_PERIPHERAL;
         }
 
